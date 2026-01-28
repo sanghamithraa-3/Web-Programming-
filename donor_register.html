@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Donor Registration - BloodLink</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url("https://images.unsplash.com/photo-1615461066841-6116e61058f4");
+    background-size:cover;
+}
+
+.form-box{
+    width:450px;
+    background:rgba(255,255,255,0.9);
+    padding:25px;
+    margin:40px auto;
+    border-radius:10px;
+}
+
+h2{text-align:center;color:#c62828;}
+
+input,select,textarea{
+    width:100%;
+    padding:8px;
+    margin:8px 0;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#c62828;
+    color:white;
+    border:none;
+    font-size:16px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="form-box">
+<h2>Donor Registration</h2>
+
+<form onsubmit="return registerDonor()">
+
+<input type="text" placeholder="Full Name" required>
+
+<input type="number" placeholder="Age" min="18" max="65" required>
+
+<input type="tel" placeholder="Contact Number" pattern="[0-9]{10}" required>
+
+<input type="text" placeholder="Aadhar Number" pattern="[0-9]{12}" required>
+
+<select required>
+    <option value="">Select Blood Group</option>
+    <option>A+</option><option>A-</option>
+    <option>B+</option><option>B-</option>
+    <option>AB+</option><option>AB-</option>
+    <option>O+</option><option>O-</option>
+</select>
+
+<select required>
+    <option value="">Past Donation History</option>
+    <option>No</option>
+    <option>Yes</option>
+</select>
+
+<input type="date">
+
+<input type="text" placeholder="City / Location" required>
+
+<textarea placeholder="Address" required></textarea>
+
+<input type="text" placeholder="Medical Conditions (if any)">
+
+<button type="submit">Register</button>
+
+</form>
+</div>
+
+<script>
+function registerDonor(){
+    alert("Donor Registered Successfully! (Frontend Demo)");
+    return false; // prevent real submission
+}
+</script>
+
+</body>
+</html>
