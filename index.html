@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BloodLink - Login Type</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url("https://images.unsplash.com/photo-1582719478250-c89cae4dc85b");
+    background-size:cover;
+    color:white;
+    text-align:center;
+}
+.box{ margin-top:150px; }
+button{
+    padding:15px 30px;
+    margin:15px;
+    font-size:18px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+.donor{background:#e53935;color:white;}
+.recipient{background:#3949ab;color:white;}
+.hospital{background:#2e7d32;color:white;}
+</style>
+</head>
+
+<body>
+<div class="box">
+    <h1>BLOODLINK</h1>
+    <p>Select your role to continue</p>
+
+    <button class="donor" onclick="goDonor()">Donor</button>
+    <button class="recipient" onclick="alert('Recipient page coming soon')">Recipient</button>
+    <button class="hospital" onclick="alert('Hospital page coming soon')">Hospital</button>
+</div>
+
+<script>
+function goDonor(){
+    window.location.href = "donor_register.html";
+}
+</script>
+
+</body>
+</html>
