@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BloodLink Login</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    /* Background similar to your design */
+    background:
+    linear-gradient(rgba(220,0,0,0.45), rgba(220,0,0,0.45)),
+    url("images/login.png");
+
+    background-size:cover;
+    background-position:center;
+}
+
+/* ---------- CONTAINER ---------- */
+.container{
+    text-align:center;
+    color:white;
+}
+
+/* ---------- LOGO ---------- */
+.logo-box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    margin-bottom:10px;
+}
+
+.logo-icon{
+    background:#ff1a1a;
+    padding:14px;
+    border-radius:12px;
+    font-size:22px;
+}
+
+.logo-text{
+    font-size:32px;
+    font-weight:bold;
+}
+
+.subtitle{
+    margin-bottom:30px;
+    opacity:0.9;
+}
+
+/* ---------- LOGIN CARD ---------- */
+.card{
+    width:360px;
+    background:#f1f1f1;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    color:#333;
+}
+
+/* ---------- ROLE SELECT ---------- */
+.roles{
+    display:flex;
+    background:#ddd;
+    border-radius:12px;
+    margin:15px 0 20px 0;
+}
+
+.roles button{
+    flex:1;
+    padding:12px;
+    border:none;
+    background:transparent;
+    cursor:pointer;
+    border-radius:12px;
+    font-weight:bold;
+}
+
+.roles button.active{
+    background:#ff1a1a;
+    color:white;
+    box-shadow:0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* ---------- EMAIL / PHONE TABS ---------- */
+.tabs{
+    display:flex;
+    gap:15px;
+    margin-bottom:10px;
+}
+
+.tabs span{
+    cursor:pointer;
+    padding:6px 12px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.tabs .active{
+    background:#ffd6d6;
+    color:#c40000;
+}
+
+/* ---------- INPUT ---------- */
+.input-box{
+    margin:12px 0;
+}
+
+.input-box input{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    outline:none;
+}
+
+/* ---------- LINKS ---------- */
+.forgot{
+    text-align:right;
+    font-size:14px;
+    margin-top:5px;
+    color:#c40000;
+    cursor:pointer;
+}
+
+/* ---------- BUTTON ---------- */
+.login-btn{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(to right,#ff3b3b,#d90000);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+/* ---------- REGISTER ---------- */
+.register{
+    margin-top:18px;
+    font-size:14px;
+}
+
+.register span{
+    color:#c40000;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* ---------- BACK HOME ---------- */
+.back-home{
+    margin-top:18px;
+    font-size:14px;
+    color:white;
+    opacity:0.9;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Logo -->
+    <div class="logo-box">
+        <div class="logo-icon">💧</div>
+        <div class="logo-text">BloodLink</div>
+    </div>
+
+    <p class="subtitle">Welcome back! Please login to your account</p>
+
+    <!-- Login Card -->
+    <div class="card">
+
+        <p style="text-align:left;font-weight:bold;">Login As</p>
+
+        <div class="roles">
+            <button class="active" onclick="selectRole(this)">Donor</button>
+            <button onclick="selectRole(this)">Recipient</button>
+            <button onclick="selectRole(this)">Hospital</button>
+        </div>
+
+        <div class="tabs">
+            <span class="active" onclick="switchTab(this)">Email</span>
+            <span onclick="switchTab(this)">Phone</span>
+        </div>
+
+        <div class="input-box">
+            <input type="text" placeholder="Email address" required>
+        </div>
+
+        <div class="input-box">
+            <input type="password" placeholder="Password" required>
+        </div>
+
+        <div class="forgot">Forgot password?</div>
+
+        <button class="login-btn">Login</button>
+
+        <div class="register">
+            Don't have an account? <span onclick="location.href='donor_register.html'">Register now</span>
+
+        </div>
+
+    </div>
+
+    <div class="back-home" onclick="location.href='index.html'">♡ Back to Home</div>
+
+
+</div>
+
+<script>
+
+/* Page Load Event */
+window.onload = () => {
+    console.log("BloodLink Home Loaded Successfully");
+
+    // Welcome message delay
+    setTimeout(() => {
+        alert("Welcome to BloodLink ❤️ Donate Blood, Save Lives!");
+    }, 1500);
+};
+
+
+/* Scroll Event */
+window.onscroll = () => {
+    const navbar = document.querySelector(".navbar");
+
+    if(window.scrollY > 50){
+        navbar.style.boxShadow = "0 3px 10px rgba(0,0,0,0.2)";
+    } else {
+        navbar.style.boxShadow = "none";
+    }
+};
+
+
+/* Resize Event */
+window.onresize = () => {
+    console.log("Window resized: " + window.innerWidth);
+};
+
+
+/* Button Click Navigation */
+document.querySelectorAll(".role-buttons button").forEach(btn => {
+
+    btn.onclick = () => {
+
+        if(btn.textContent === "Donor"){
+            window.location.href = "file3.html";
+        }
+
+        if(btn.textContent === "Recipient"){
+            window.location.href = "file3.html#recipient";
+        }
+
+        if(btn.textContent === "Hospital"){
+            window.location.href = "file3.html#hospital";
+        }
+    };
+
+});
+
+</script>
+
+
+</body>
+</html>

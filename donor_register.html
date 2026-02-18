@@ -1,92 +1,223 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Donor Registration - BloodLink</title>
+<title>BloodLink Registration</title>
 
 <style>
 body{
-    margin:0;
-    font-family:Arial;
-    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-    url("https://images.unsplash.com/photo-1615461066841-6116e61058f4");
-    background-size:cover;
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+  url("https://images.unsplash.com/photo-1615461066841-6116e61058f4");
+  background-size:cover;
+}
+
+/* layout */
+.container{
+  width:480px;
+  margin:30px auto;
+}
+
+.tabs{
+  display:flex;
+  gap:6px;
+  margin-bottom:10px;
+}
+
+.tabs button{
+  flex:1;
+  padding:10px;
+  background:#eee;
+  border:none;
+  cursor:pointer;
+}
+
+.tabs button.active{
+  background:#c62828;
+  color:white;
 }
 
 .form-box{
-    width:450px;
-    background:rgba(255,255,255,0.9);
-    padding:25px;
-    margin:40px auto;
-    border-radius:10px;
+  background:rgba(255,255,255,0.92);
+  padding:25px;
+  border-radius:10px;
 }
 
 h2{text-align:center;color:#c62828;}
 
 input,select,textarea{
-    width:100%;
-    padding:8px;
-    margin:8px 0;
+  width:100%;
+  padding:8px;
+  margin:8px 0;
 }
 
-button{
-    width:100%;
-    padding:10px;
-    background:#c62828;
-    color:white;
-    border:none;
-    font-size:16px;
-    cursor:pointer;
+button.submit{
+  width:100%;
+  padding:10px;
+  background:#c62828;
+  color:white;
+  border:none;
+  font-size:16px;
+  cursor:pointer;
 }
+
+.hidden{display:none;}
 </style>
 </head>
 
 <body>
 
-<div class="form-box">
+<div class="container">
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab active" data-target="donor">Donor</button>
+  <button class="tab" data-target="recipient">Recipient</button>
+  <button class="tab" data-target="hospital">Hospital</button>
+</div>
+
+<!-- ================= DONOR ================= -->
+<div class="form-box form" id="donor">
 <h2>Donor Registration</h2>
+<form id="donorForm">
 
-<form onsubmit="return registerDonor()">
+<input name="name" type="text" placeholder="Full Name" required>
+<input name="age" type="number" min="18" max="65" placeholder="Age" required>
+<input name="phone" type="tel" pattern="[0-9]{10}" placeholder="Contact Number" required>
+<input name="aadhar" type="text" pattern="[0-9]{12}" placeholder="Aadhar Number" required>
 
-<input type="text" placeholder="Full Name" required>
-
-<input type="number" placeholder="Age" min="18" max="65" required>
-
-<input type="tel" placeholder="Contact Number" pattern="[0-9]{10}" required>
-
-<input type="text" placeholder="Aadhar Number" pattern="[0-9]{12}" required>
-
-<select required>
-    <option value="">Select Blood Group</option>
-    <option>A+</option><option>A-</option>
-    <option>B+</option><option>B-</option>
-    <option>AB+</option><option>AB-</option>
-    <option>O+</option><option>O-</option>
+<select name="blood" required>
+<option value="">Blood Group</option>
+<option>A+</option><option>A-</option>
+<option>B+</option><option>B-</option>
+<option>AB+</option><option>AB-</option>
+<option>O+</option><option>O-</option>
 </select>
 
-<select required>
-    <option value="">Past Donation History</option>
-    <option>No</option>
-    <option>Yes</option>
+<select name="history" required>
+<option value="">Past Donation</option>
+<option>No</option>
+<option>Yes</option>
 </select>
 
-<input type="date">
+<input name="date" type="date">
+<input name="city" type="text" placeholder="City" required>
+<textarea name="address" placeholder="Address" required></textarea>
+<textarea name="medical" placeholder="Medical Conditions"></textarea>
 
-<input type="text" placeholder="City / Location" required>
-
-<textarea placeholder="Address" required></textarea>
-
-<input type="text" placeholder="Medical Conditions (if any)">
-
-<button type="submit">Register</button>
-
+<button class="submit">Register</button>
 </form>
 </div>
 
+<!-- ================= RECIPIENT ================= -->
+<div class="form-box form hidden" id="recipient">
+<h2>Recipient Registration</h2>
+<form id="recipientForm">
+
+<input name="name" type="text" placeholder="Patient Name" required>
+<input name="age" type="number" placeholder="Age" required>
+<input name="phone" type="tel" pattern="[0-9]{10}" placeholder="Contact Number" required>
+
+<select name="blood" required>
+<option value="">Required Blood Group</option>
+<option>A+</option><option>A-</option>
+<option>B+</option><option>B-</option>
+<option>AB+</option><option>AB-</option>
+<option>O+</option><option>O-</option>
+</select>
+
+<input name="units" type="number" placeholder="Units Required" required>
+<input name="hospital" type="text" placeholder="Hospital Name" required>
+<textarea name="address" placeholder="Hospital Address" required></textarea>
+<textarea name="reason" placeholder="Medical Reason" required></textarea>
+
+<button class="submit">Register</button>
+</form>
+</div>
+
+<!-- ================= HOSPITAL ================= -->
+<div class="form-box form hidden" id="hospital">
+<h2>Hospital Registration</h2>
+<form id="hospitalForm">
+
+<input name="hospitalName" type="text" placeholder="Hospital Name" required>
+<input name="license" type="text" placeholder="License Number" required>
+<input name="contactPerson" type="text" placeholder="Contact Person" required>
+<input name="phone" type="tel" pattern="[0-9]{10}" placeholder="Contact Number" required>
+<input name="email" type="email" placeholder="Email" required>
+<textarea name="address" placeholder="Address" required></textarea>
+<input name="capacity" type="number" placeholder="Blood Storage Capacity" required>
+
+<button class="submit">Register</button>
+</form>
+</div>
+
+</div>
+
 <script>
-function registerDonor(){
-    alert("Donor Registered Successfully! (Frontend Demo)");
-    return false; // prevent real submission
-}
+/* ---------- Tab switching ---------- */
+const tabs = document.querySelectorAll(".tab");
+const forms = document.querySelectorAll(".form");
+
+tabs.forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    tabs.forEach(b=>b.classList.remove("active"));
+    forms.forEach(f=>f.classList.add("hidden"));
+
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.target).classList.remove("hidden");
+  });
+});
+
+/* ---------- Modern form handler ---------- */
+const handleSubmit = (form, type) => {
+  form.addEventListener("submit", e=>{
+    e.preventDefault();
+
+    const data = Object.fromEntries(new FormData(form));
+    console.log(type, data); // demo only
+
+    alert(`${type} Registered Successfully!`);
+    form.reset();
+  });
+};
+
+handleSubmit(document.getElementById("donorForm"), "Donor");
+handleSubmit(document.getElementById("recipientForm"), "Recipient");
+handleSubmit(document.getElementById("hospitalForm"), "Hospital");
+
+window.onload = () => {
+  const hash = location.hash.replace("#","");
+  if(hash){
+    document.querySelector(`[data-target="${hash}"]`)?.click();
+  }
+};
+
+/* Before leaving page warning */
+window.onbeforeunload = () => {
+    return "Are you sure you want to leave? Form data may be lost.";
+};
+
+
+/* Blood group change event */
+document.querySelectorAll("select[name='blood']").forEach(select => {
+    select.onchange = () => {
+        console.log("Blood group selected:", select.value);
+    };
+});
+
+
+/* Input typing validation */
+document.querySelectorAll("input[name='phone']").forEach(phone => {
+    phone.oninput = () => {
+        if(phone.value.length === 10){
+            phone.style.border = "2px solid green";
+        } else {
+            phone.style.border = "2px solid red";
+        }
+    };
+});
+
 </script>
 
 </body>
