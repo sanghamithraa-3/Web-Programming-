@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <title>BloodLink</title>
 
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <style>
 
 *{
@@ -26,6 +29,9 @@ body{
     padding:15px 60px;
     background:white;
     border-bottom:3px solid #e53935;
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
 .logo{
@@ -51,15 +57,14 @@ body{
     font-weight:500;
 }
 
-/* ---------- HERO SECTION ---------- */
+/* ---------- HERO ---------- */
 
 .hero{
     height:85vh;
     background: linear-gradient(rgba(230,0,0,0.7), rgba(255,255,255,0.5)),
-                url("images/hero.png");
+                url("images/blood donation bg.png");
     background-size:cover;
     background-position:center;
-
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -77,8 +82,6 @@ body{
     font-size:20px;
     margin-bottom:30px;
 }
-
-/* Role buttons */
 
 .role-buttons button{
     padding:15px 45px;
@@ -117,8 +120,6 @@ body{
     line-height:1.6;
 }
 
-/* Cards */
-
 .card-container{
     display:flex;
     justify-content:center;
@@ -153,7 +154,7 @@ body{
     margin-bottom:10px;
 }
 
-/* ---------- QUOTE SECTION ---------- */
+/* ---------- QUOTE ---------- */
 
 .quote{
     background:#ff1a1a;
@@ -195,16 +196,19 @@ body{
     color:#888;
 }
 
+/* ---------- FADE ANIMATION ---------- */
+
+.fade-section{
+    opacity:0;
+    transform:translateY(60px);
+}
+
 </style>
 </head>
-
 
 <body>
 
 <!-- NAVBAR -->
-
-
-
 <div class="navbar">
     <div class="logo">
         <div class="logo-box">❤</div>
@@ -217,27 +221,22 @@ body{
         <a href="donor_register.html">Register</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-
     </div>
 </div>
-
 
 <!-- HERO -->
 <div class="hero">
     <h1>BloodLink</h1>
     <p>Connecting Donors, Recipients, and Hospitals Efficiently</p>
     <div class="role-buttons">
-        <button onclick="location.href='donor_register.html#donor'">Donor</button>
-        <button onclick="location.href='donor_register.html#recipient'">Recipient</button>
-        <button onclick="location.href='donor_register.html#hospital'">Hospital</button>
+        <button data-role="donor">Donor</button>
+        <button data-role="recipient">Recipient</button>
+        <button data-role="hospital">Hospital</button>
     </div>
-
 </div>
 
-
-<!-- INFO SECTION -->
-<div class="info">
-
+<!-- INFO -->
+<div class="info fade-section">
     <h2>Saving Lives Through Blood Donation</h2>
     <p>
         BloodLink is a comprehensive blood donor and request management system
@@ -245,40 +244,34 @@ body{
     </p>
 
     <div class="card-container">
-
         <div class="card">
             <div class="card-icon">👤</div>
             <h3>Donors</h3>
-            <p>Register as a donor and help save lives. Your donation makes a critical difference.</p>
+            <p>Register as a donor and help save lives.</p>
         </div>
 
         <div class="card">
             <div class="card-icon">🏥</div>
             <h3>Hospitals</h3>
-            <p>Manage blood inventory efficiently and connect with donors quickly.</p>
+            <p>Manage blood inventory efficiently.</p>
         </div>
 
         <div class="card">
             <div class="card-icon">❤</div>
             <h3>Emergency Help</h3>
-            <p>Get immediate access to blood donors in critical situations.</p>
+            <p>Get immediate access to blood donors.</p>
         </div>
-
     </div>
 </div>
 
-
 <!-- QUOTE -->
-<div class="quote">
+<div class="quote fade-section">
     <h2>Donate Blood – Save Lives</h2>
 </div>
 
-
 <!-- FOOTER -->
-<div class="footer">
-
+<div class="footer fade-section">
     <div class="footer-container">
-
         <div>
             <h3>BloodLink</h3>
             <p>Connecting donors, recipients and hospitals.</p>
@@ -297,65 +290,73 @@ body{
             <p>Instagram</p>
             <p>LinkedIn</p>
         </div>
-
     </div>
 
     <div class="footer-bottom">
         © 2026 BloodLink | Designed to Save Lives
     </div>
-
 </div>
+
+<!-- jQuery Script -->
+ 
 <script>
 
-/* Page Load Event */
-window.onload = () => {
+$(document).ready(function(){
+
     console.log("BloodLink Home Loaded Successfully");
 
-    // Welcome message delay
-    setTimeout(() => {
+    /* Welcome Message */
+    setTimeout(function(){
         alert("Welcome to BloodLink ❤️ Donate Blood, Save Lives!");
-    }, 1500);
-};
+    },1500);
 
+    /* Navbar Shadow */
+    $(window).on("scroll", function(){
 
-/* Scroll Event */
-window.onscroll = () => {
-    const navbar = document.querySelector(".navbar");
-
-    if(window.scrollY > 50){
-        navbar.style.boxShadow = "0 3px 10px rgba(0,0,0,0.2)";
-    } else {
-        navbar.style.boxShadow = "none";
-    }
-};
-
-
-/* Resize Event */
-window.onresize = () => {
-    console.log("Window resized: " + window.innerWidth);
-};
-
-
-/* Button Click Navigation */
-document.querySelectorAll(".role-buttons button").forEach(btn => {
-
-    btn.onclick = () => {
-
-        if(btn.textContent === "Donor"){
-            window.location.href = "donor_register.html";
+        if($(this).scrollTop() > 50){
+            $(".navbar").css("box-shadow","0 3px 10px rgba(0,0,0,0.2)");
+        } else {
+            $(".navbar").css("box-shadow","none");
         }
 
-        if(btn.textContent === "Recipient"){
+        /* Fade In Effect */
+        $(".fade-section").each(function(){
+
+            var position = $(this).offset().top;
+            var windowBottom = $(window).scrollTop() + $(window).height();
+
+            if(position < windowBottom - 100){
+                $(this).animate({opacity:1},800);
+                $(this).css("transform","translateY(0)");
+            }
+
+        });
+
+    });
+
+    /* Trigger Scroll On Load */
+    $(window).trigger("scroll");
+
+    /* Role Button Navigation */
+    $(".role-buttons button").on("click", function(){
+
+        let role = $(this).data("role");
+
+        if(role === "donor"){
+            window.location.href = "donor_register.html#donor";
+        }
+
+        if(role === "recipient"){
             window.location.href = "donor_register.html#recipient";
         }
 
-        if(btn.textContent === "Hospital"){
+        if(role === "hospital"){
             window.location.href = "donor_register.html#hospital";
         }
-    };
+
+    });
 
 });
-
 </script>
 
 </body>
