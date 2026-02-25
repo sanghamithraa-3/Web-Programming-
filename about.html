@@ -2,10 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>BloodLink</title>
-
-<!-- jQuery CDN -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<title>About BloodLink</title>
 
 <style>
 
@@ -17,344 +14,197 @@
 }
 
 body{
-    background:#f5f6f8;
-}
+    background:
+    linear-gradient(rgba(220,0,0,0.7), rgba(220,0,0,0.7)),
+    url("https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1920&q=100");
 
-/* ---------- NAVBAR ---------- */
-
-.navbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 60px;
-    background:white;
-    border-bottom:3px solid #e53935;
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-weight:bold;
-    font-size:22px;
-    color:#e53935;
-}
-
-.logo-box{
-    background:#e53935;
-    color:white;
-    padding:8px 10px;
-    border-radius:8px;
-}
-
-.nav-links a{
-    margin-left:25px;
-    text-decoration:none;
-    color:#333;
-    font-weight:500;
-}
-
-/* ---------- HERO ---------- */
-
-.hero{
-    height:85vh;
-    background: linear-gradient(rgba(230,0,0,0.7), rgba(255,255,255,0.5)),
-                url("images/blood donation bg.png");
     background-size:cover;
     background-position:center;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
     color:white;
 }
 
-.hero h1{
-    font-size:55px;
-    margin-bottom:10px;
+/* Container */
+.container{
+    width:80%;
+    margin:50px auto;
 }
 
-.hero p{
-    font-size:20px;
-    margin-bottom:30px;
-}
-
-.role-buttons button{
-    padding:15px 45px;
-    margin:10px;
-    border:none;
-    border-radius:12px;
-    background:white;
-    color:#e53935;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
-    transition:0.3s;
-}
-
-.role-buttons button:hover{
-    background:#ffe5e5;
-}
-
-/* ---------- INFO SECTION ---------- */
-
-.info{
-    padding:70px 60px;
-    text-align:center;
-}
-
-.info h2{
-    font-size:32px;
-    margin-bottom:15px;
-}
-
-.info p{
-    width:60%;
-    margin:auto;
-    color:#555;
-    line-height:1.6;
-}
-
-.card-container{
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    margin-top:40px;
-    flex-wrap:wrap;
-}
-
-.card{
-    background:white;
-    width:300px;
+/* Section Box */
+.section{
+    background:rgba(255,255,255,0.95);
+    color:#333;
     padding:30px;
+    margin-bottom:30px;
     border-radius:15px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.1);
-    text-align:left;
-}
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
 
-.card-icon{
-    background:#e53935;
-    color:white;
-    width:50px;
-    height:50px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:10px;
-    margin-bottom:15px;
-    font-size:20px;
-}
-
-.card h3{
-    margin-bottom:10px;
-}
-
-/* ---------- QUOTE ---------- */
-
-.quote{
-    background:#ff1a1a;
-    color:white;
-    text-align:center;
-    padding:60px 20px;
-}
-
-.quote h2{
-    font-size:38px;
-}
-
-/* ---------- FOOTER ---------- */
-
-.footer{
-    background:#0c1b2a;
-    color:white;
-    padding:50px 60px;
-}
-
-.footer-container{
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-}
-
-.footer h3{
-    margin-bottom:15px;
-}
-
-.footer p{
-    color:#bbb;
-    margin-bottom:8px;
-}
-
-.footer-bottom{
-    text-align:center;
-    margin-top:30px;
-    color:#888;
-}
-
-/* ---------- FADE ANIMATION ---------- */
-
-.fade-section{
     opacity:0;
     transform:translateY(60px);
+    transition:0.6s ease;
+}
+
+.section h2{
+    color:#e53935;
+    margin-bottom:15px;
+}
+
+.section p{
+    line-height:1.7;
+    margin-bottom:12px;
+}
+
+/* Highlight boxes */
+.features{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.feature-box{
+    flex:1;
+    min-width:250px;
+    background:#ffe5e5;
+    padding:20px;
+    border-radius:12px;
+}
+
+.feature-box h3{
+    color:#c62828;
+    margin-bottom:10px;
+}
+
+/* Back Button */
+.back{
+    text-align:center;
+    margin-top:30px;
+}
+
+.back a{
+    text-decoration:none;
+    background:#e53935;
+    color:white;
+    padding:12px 25px;
+    border-radius:10px;
 }
 
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-    <div class="logo">
-        <div class="logo-box">❤</div>
-        BloodLink
-    </div>
+<div class="container">
 
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="login.html">Login</a>
-        <a href="donor_register.html">Register</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-    </div>
+<!-- ABOUT -->
+<div class="section">
+<h2>About BloodLink</h2>
+
+<p>
+BloodLink is a Smart Blood Donor and Request Management System designed to
+bridge the gap between blood donors, recipients, and hospitals through a
+single digital platform.
+</p>
+
+<p>
+Our goal is to ensure that life‑saving blood reaches patients quickly and
+efficiently during emergencies. BloodLink simplifies communication and
+reduces delays by connecting people who are willing to donate blood with
+those who need it.
+</p>
+
+<p>
+We aim to build a strong and responsible blood donation community by
+encouraging voluntary donation and spreading awareness about its importance.
+</p>
+
 </div>
 
-<!-- HERO -->
-<div class="hero">
-    <h1>BloodLink</h1>
-    <p>Connecting Donors, Recipients, and Hospitals Efficiently</p>
-    <div class="role-buttons">
-        <button data-role="donor">Donor</button>
-        <button data-role="recipient">Recipient</button>
-        <button data-role="hospital">Hospital</button>
-    </div>
+<!-- MISSION -->
+<div class="section">
+<h2>Our Mission</h2>
+
+<p>
+Our mission is to create a reliable and accessible system that helps save
+lives by ensuring blood availability whenever and wherever it is needed.
+</p>
+
+<p>
+BloodLink focuses on improving healthcare coordination by providing fast
+donor search, emergency request management, and hospital blood inventory
+support.
+</p>
+
 </div>
 
-<!-- INFO -->
-<div class="info fade-section">
-    <h2>Saving Lives Through Blood Donation</h2>
-    <p>
-        BloodLink is a comprehensive blood donor and request management system
-        that bridges the gap between donors, recipients, and hospitals.
-    </p>
+<!-- FEATURES -->
+<div class="section">
+<h2>Key Features</h2>
 
-    <div class="card-container">
-        <div class="card">
-            <div class="card-icon">👤</div>
-            <h3>Donors</h3>
-            <p>Register as a donor and help save lives.</p>
-        </div>
+<div class="features">
 
-        <div class="card">
-            <div class="card-icon">🏥</div>
-            <h3>Hospitals</h3>
-            <p>Manage blood inventory efficiently.</p>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">❤</div>
-            <h3>Emergency Help</h3>
-            <p>Get immediate access to blood donors.</p>
-        </div>
-    </div>
+<div class="feature-box">
+<h3>Donor Registration</h3>
+<p>Allows voluntary donors to register and update their availability easily.</p>
 </div>
 
-<!-- QUOTE -->
-<div class="quote fade-section">
-    <h2>Donate Blood – Save Lives</h2>
+<div class="feature-box">
+<h3>Hospital Support</h3>
+<p>Hospitals can manage blood inventory and send emergency requests quickly.</p>
 </div>
 
-<!-- FOOTER -->
-<div class="footer fade-section">
-    <div class="footer-container">
-        <div>
-            <h3>BloodLink</h3>
-            <p>Connecting donors, recipients and hospitals.</p>
-        </div>
-
-        <div>
-            <h3>Contact Info</h3>
-            <p>+91 9876543210</p>
-            <p>bloodlink@gmail.com</p>
-            <p>Healthcare City</p>
-        </div>
-
-        <div>
-            <h3>Follow Us</h3>
-            <p>Facebook</p>
-            <p>Instagram</p>
-            <p>LinkedIn</p>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        © 2026 BloodLink | Designed to Save Lives
-    </div>
+<div class="feature-box">
+<h3>Emergency Response</h3>
+<p>Recipients can find donors instantly during critical situations.</p>
 </div>
 
-<!-- jQuery Script -->
- 
+</div>
+
+</div>
+
+<!-- VISION -->
+<div class="section">
+<h2>Our Vision</h2>
+
+<p>
+We envision a society where no life is lost due to blood shortage. BloodLink
+strives to create a nationwide donor network that promotes awareness,
+responsibility, and community support.
+</p>
+
+</div>
+
+<div class="back">
+<a href="index.html">⬅ Back to Home</a>
+</div>
+
+</div>
+
 <script>
-
 $(document).ready(function(){
 
-    console.log("BloodLink Home Loaded Successfully");
-
-    /* Welcome Message */
-    setTimeout(function(){
-        alert("Welcome to BloodLink ❤️ Donate Blood, Save Lives!");
-    },1500);
-
-    /* Navbar Shadow */
+    /* Scroll Fade Animation (jQuery version) */
     $(window).on("scroll", function(){
 
-        if($(this).scrollTop() > 50){
-            $(".navbar").css("box-shadow","0 3px 10px rgba(0,0,0,0.2)");
-        } else {
-            $(".navbar").css("box-shadow","none");
-        }
-
-        /* Fade In Effect */
-        $(".fade-section").each(function(){
+        $(".section").each(function(){
 
             var position = $(this).offset().top;
-            var windowBottom = $(window).scrollTop() + $(window).height();
+            var scrollTop = $(window).scrollTop();
+            var windowHeight = $(window).height();
 
-            if(position < windowBottom - 100){
-                $(this).animate({opacity:1},800);
-                $(this).css("transform","translateY(0)");
+            if(position < scrollTop + windowHeight - 100){
+                $(this).css({
+                    "opacity": "1",
+                    "transform": "translateY(0)"
+                });
             }
 
         });
 
     });
 
-    /* Trigger Scroll On Load */
+    /* Trigger animation on page load */
     $(window).trigger("scroll");
-
-    /* Role Button Navigation */
-    $(".role-buttons button").on("click", function(){
-
-        let role = $(this).data("role");
-
-        if(role === "donor"){
-            window.location.href = "donor_register.html#donor";
-        }
-
-        if(role === "recipient"){
-            window.location.href = "donor_register.html#recipient";
-        }
-
-        if(role === "hospital"){
-            window.location.href = "donor_register.html#hospital";
-        }
-
-    });
 
 });
 </script>
